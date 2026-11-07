@@ -1,10 +1,74 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website Pertamaku</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Quiz</title>
+<style>
+body {
+  font-family: Arial;
+  background: #fce4ec;
+  padding: 20px;
+}
+.box {
+  background: white;
+  padding: 22px;
+  border-radius: 15px;
+  max-width: 450px;
+  margin: auto;
+}
+button {
+  background: #e91e63;
+  color: white;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 10px;
+}
+input {
+  padding: 12px;
+  width: 90%;
+  margin: 5px;
+}
+</style>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>Aku sedang belajar membuat website.</p>
+<div class="box">
+<h2>🌸 English Quiz</h2>
+<input id="nama" placeholder="Student Name">
+<input id="kelas" placeholder="Class">
+
+<hr>
+<p>1. What is the meaning of beautiful?</p>
+<label><input type="radio" name="q1" value="A"> Cantik</label><br>
+<label><input type="radio" name="q1" value="B"> Jelek</label><br>
+<label><input type="radio" name="q1" value="C"> Marah</label>
+
+<p>2. What is the past form of go?</p>
+<label><input type="radio" name="q2" value="A"> Goes</label><br>
+<label><input type="radio" name="q2" value="B"> Went</label><br>
+<label><input type="radio" name="q2" value="C"> Going</label>
+
+<button onclick="cek()">SUBMIT ANSWERS</button>
+<h3 id="hasil"></h3>
+</div>
+
+<script>
+function cek() {
+ let nama = document.getElementById("nama").value;
+ let kelas = document.getElementById("kelas").value;
+ if (!nama || !kelas) {
+   alert("Fill in your name and class!");
+   return;
+ }
+ let skor = 0;
+ if(document.querySelector('input[name="q1"]:checked')?.value === "A") skor++;
+ if(document.querySelector('input[name="q2"]:checked')?.value === "B") skor++;
+ document.getElementById("hasil").innerHTML =
+ "Student: " + nama + "<br>Class: " + kelas +
+ "<br>Your Score: " + (skor * 50);
+}
+</script>
 </body>
 </html>
